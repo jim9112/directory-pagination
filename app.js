@@ -1,13 +1,18 @@
  const studentList = document.querySelectorAll('.student-item');
  var pageNumber = 1;
 
-
+// function controls what employees are displayed
 function showPage(pageNumber){
+    // sets all displays to none
     const test = document.querySelectorAll('.student-item');
     for(i=0; i< test.length; i++) {
         test[i].style.display = "none";
     }
+
+    // variable determines where thin the directory the display will start 
     startingPoint = (pageNumber * 10 - 10);
+
+    // loop through all employees and display the apropriate 10 for selected page
     for (i = 0; i < 10; i++) {
         if (startingPoint < test.length){
         test[startingPoint].style.display = "list-item";
@@ -26,7 +31,7 @@ function appendPageLinks(studentList) {
     for (i=1; i <= numPages; i++) {
     document.querySelector('.pagination ul').innerHTML += '<li><a href="#">' + i + '</a></li>';
     }
-    
+
     // initially sets the first page link class to active
     document.querySelector('.pagination ul li a').className = 'active';
     // add click functionality to links
