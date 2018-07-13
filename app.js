@@ -9,32 +9,47 @@ function showPage(pageNumber){
     }
     startingPoint = (pageNumber * 10 - 10);
     for (i = 0; i < 10; i++) {
+        if (startingPoint < test.length){
         test[startingPoint].style.display = "list-item";
         startingPoint++;
+        }
     }
 }
 
 function appendPageLinks(studentList) {
-    numPages = Math.ceil(studentList.length / 10);// determine how many pages for this student list
-    document.querySelector('.page').innerHTML += '<div class="pagination"><ul></ul></div>';// create a page link section
+    // determine how many pages for this student list
+    numPages = Math.ceil(studentList.length / 10);
+
+    // create a page link section
+    document.querySelector('.page').innerHTML += '<div class="pagination"><ul></ul></div>';
+    // add links based on amount of pages needed
     for (i=1; i <= numPages; i++) {
-        document.querySelector('.pagination ul').innerHTML += '<li><a href="#">' + i + '</a></li>';
+    document.querySelector('.pagination ul').innerHTML += '<li><a href="#">' + i + '</a></li>';
     }
     
+    // initially sets the first page link class to active
+    document.querySelector('.pagination ul li a').className = 'active';
+    // add click functionality to links
     listItems = document.querySelectorAll('.pagination ul li a');
-    
     listItems.forEach(function(item) {
         item.onclick = function(e) {
+            //assign page number value based on link clicked
             pageNumber = this.innerText;
-           console.log();
-           this.className = "active";
-           showPage(pageNumber);
-           
-           
+            // remove all previous classes on links
+            for (i=0; i<listItems.length; i++){
+                listItems[i].className = "";
+            }
+            // add active class to current link 
+            this.className = "active";
+
+            // run show page function when passed the selected page number
+            showPage(pageNumber);
         }
       });
-    
     }
-showPage(pageNumber);
+// run show page funtion the first time to show first page on startup    
+
+
+// listItems[1].className = 'active';
 appendPageLinks(studentList);
-studentList[1].style.display = "list-item";
+showPage(pageNumber);
