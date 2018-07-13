@@ -4,9 +4,9 @@
 // function controls what employees are displayed
 function showPage(pageNumber){
     // sets all displays to none
-    const test = document.querySelectorAll('.student-item');
-    for(i=0; i< test.length; i++) {
-        test[i].style.display = "none";
+    const studentList = document.querySelectorAll('.student-item');
+    for(i=0; i< studentList.length; i++) {
+        studentList[i].style.display = "none";
     }
 
     // variable determines where thin the directory the display will start 
@@ -14,8 +14,8 @@ function showPage(pageNumber){
 
     // loop through all employees and display the apropriate 10 for selected page
     for (i = 0; i < 10; i++) {
-        if (startingPoint < test.length){
-        test[startingPoint].style.display = "list-item";
+        if (startingPoint < studentList.length){
+        studentList[startingPoint].style.display = "list-item";
         startingPoint++;
         }
     }
