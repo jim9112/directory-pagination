@@ -19,7 +19,7 @@
         startingPoint++;
         }
     }
-}
+};
 
 const appendPageLinks = (studentList) => {
     // determine how many pages for this student list
@@ -49,12 +49,9 @@ const appendPageLinks = (studentList) => {
 
             // run show page function when passed the selected page number
             showPage(pageNumber);
-        }
+        };
       });
-    }
+    };
 // run show page funtion the first time to show first page on startup    
-
-
-// listItems[1].className = 'active';
 appendPageLinks(studentList);
 showPage(pageNumber);
